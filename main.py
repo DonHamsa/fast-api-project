@@ -91,10 +91,15 @@ def leaderboard():
     """
     players = get_leaderboard()
     if not players:
-        return {"message": "No one has solved their number yet. Be the first!", "leaderboard": []}
+        return {"message": "No players have registered yet.", "leaderboard": []}
 
     ranked = [
-        {"rank": i + 1, "username": p["username"], "guesses": p["guess_count"]}
+        {
+            "rank": i + 1,
+            "username": p["username"],
+            "guesses": p["guess_count"],
+            "solved": bool(p["solved"]),
+        }
         for i, p in enumerate(players)
     ]
     return {"leaderboard": ranked}
