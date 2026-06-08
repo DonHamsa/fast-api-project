@@ -120,4 +120,4 @@ def player_status(username: str):
 
 @app.get("/", summary="Health check")
 def root():
-    return {"status": "ok", "message": "Guessing game is running. Visit /docs to play!"}
+    return {"status": "ok", "message": "Guessing game is running"}
