@@ -52,7 +52,9 @@ def update_guess(username: str, new_count: int, solved: bool):
 
 def get_leaderboard() -> list[dict]:
     with _conn() as conn:
+        print('rb')
         rows = conn.execute(
-            "SELECT username, guess_count FROM players ORDER BY guess_count ASC, username ASC"
+            "SELECT username, guess_count, solved FROM players ORDER BY guess_count ASC, username ASC"
         ).fetchall()
+        print([dict(r) for r in rows])
     return [dict(r) for r in rows]
